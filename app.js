@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const path = require('path');
+const path = require('path'); // Yeh line top par honi chahiye
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -27,6 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
+app.set("views", path.join(__dirname, "views")); // Yeh line sabse zaroori hai!
 
 //----------------------
 // AUTH ROUTES (Same as DevFlow)
