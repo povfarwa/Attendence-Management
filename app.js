@@ -11,10 +11,15 @@ const User = require('./models/User'); // Same (Teacher/Admin)
 const Student = require('./models/Student'); // NEW: Students ka data
 const Attendance = require('./models/Attendance'); // NEW: Rozana ki hazri
 
-// Database Connection
-mongoose.connect("mongodb://127.0.0.1:27017/attendanceDB") // UPDATE: Naya Database naam
-    .then(() => console.log("Connected to Attendance DB..."))
-    .catch(err => console.error("Connection Error:", err));
+// Purani line aisi hogi: mongoose.connect("mongodb://127.0.0.1:27017/attendanceDB")
+// Usay hata kar ye likhein:
+
+// Is block ko copy-paste kar dein
+const dbURI = "mongodb+srv://farwa:attendance123@cluster0.gf29but.mongodb.net/attendanceDB?retryWrites=true&w=majority&appName=Cluster0";
+
+mongoose.connect(dbURI)
+    .then(() => console.log("Cloud Database Connected! ✅"))
+    .catch(err => console.log("Database Connection Error: ", err));
 
 // Middlewares (Same as DevFlow)
 app.set('view engine', 'ejs');
